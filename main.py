@@ -37,14 +37,6 @@ size_distribution = df['size_bin'].value_counts().sort_index()
 print("Rozkład powierzchni mieszkań:")
 print(size_distribution)
 
-# Tworzymy histogram dla ceny
-plt.figure(figsize=(10, 6))
-plt.hist(df['price'], bins=50, color='blue', edgecolor='black', alpha=0.7)
-plt.title('Histogram dla Ceny mieszkań', fontsize=14)
-plt.xlabel('Cena (PLN)', fontsize=12)
-plt.ylabel('Liczba mieszkań', fontsize=12)
-plt.show()
-
 #SREDNIAAA
 # Obliczanie średniej dla kolumny 'price' (ceny mieszkań)
 mean_price = df['price'].mean()
@@ -234,7 +226,7 @@ print(f"Pozycyjny wskaźnik asymetrii ceny mieszkań: {pos_asymmetry_price:.2f}"
 print(f"Pozycyjny wskaźnik asymetrii powierzchni mieszkań: {pos_asymmetry_square_meters:.2f}")
 
 #KLASYCZNY WSKAZNIK ASYMETRII
-# Obliczanie klasycznego współczynnika asymetrii dla price 
+# Obliczanie klasycznego współczynnika asymetrii dla price
 skewness_price = skew(df['price'])
 
 # Obliczanie klasycznego współczynnika asymetrii dla squareMeters
@@ -247,3 +239,20 @@ print(f"Klasyczny współczynnik asymetrii powierzchni mieszkań: {skewness_squa
 
 correlation_price_size = df['price'].corr(df['squareMeters'])
 print(f"Współczynnik korelacji Pearsona między ceną a powierzchnią mieszkań: {correlation_price_size:.2f}")
+
+# histogram dla ceny
+plt.figure(figsize=(10, 6))
+plt.hist(df['price'], bins=10, color='blue', edgecolor='black', alpha=0.7)
+plt.title('Histogram dla Ceny mieszkań', fontsize=14)
+plt.xlabel('Cena (PLN)', fontsize=12)
+plt.ylabel('Liczba mieszkań', fontsize=12)
+plt.show()
+
+#histogram dla powierzchni
+
+plt.figure(figsize=(10, 6))
+plt.hist(df['squareMeters'], bins=10, color='blue', edgecolor='black', alpha=0.7)
+plt.title('Histogram dla powierzchni mieszkań', fontsize=14)
+plt.xlabel('Powierzchnia mieszkań (m²)', fontsize=12)
+plt.ylabel('Liczba mieszkań', fontsize=12)
+plt.show()
